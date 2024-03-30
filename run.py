@@ -3,8 +3,8 @@ from discord.ext import commands
 from openai import OpenAI
 
 #Установка токена
-DISCORD_TOKEN = "MTIyMjg3NjUxMDAzNDMyOTcyMQ.GVPNL0.TbzsA9uwPNItSEqGMcd-K2wjkuZkPChaiaQT9U"
-OPENAI_API_KEY = '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'
+DISCORD_TOKEN = "MTIyMjg3NjUxMDAzNDMyOTcyMQ.G7yJ-v.OP4YMpyaWfsdWX3nikyzjBlR2rkJI84TYjrp0w"
+OPENAI_API_KEY = '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'
 
 #Подключение openAI
 client = OpenAI(api_key=OPENAI_API_KEY)
@@ -26,7 +26,7 @@ async def chat(ctx, *, prompt):
             {"role": "system", "content": "Тебе необходимо поддерживать диалог. Ты должен запоминать предедущие отправленные тебе сообщения и брать из них контекст для вопроса и/или ответа"},
             {"role": "assistant", "content": "Тебе необходимо следовать контексту предыдущих сообщений и не повторять вопросы"},
             {"role": "user", "content": prompt}],
-        model="gpt-3.5-turbo-0125",
+        model="gpt-4",
         temperature=1,
         max_tokens=2000
         )
