@@ -41,7 +41,7 @@ async def image(ctx, *, prompt):
     response = client.images.generate(
         model="dall-e-2", #лимит 5 картинок в минуту
         prompt=prompt,
-        style="natural"
+        style="natural",
         size="1024x1024",
         quality="standard",
         
