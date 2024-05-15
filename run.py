@@ -4,25 +4,24 @@ from discord.ext import commands
 import openai
 from openai import OpenAI
 
-#Установка токена
+#initialazing the token and pasting API key
 DISCORD_TOKEN = "MTIyMjg3NjUxMDAzNDMyOTcyMQ.G7yJ-v.OP4YMpyaWfsdWX3nikyzjBlR2rkJI84TYjrp0w"
 OPENAI_API_KEY = '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'
 
-#Подключение openAI
+#connecting openAI
 client = OpenAI(api_key=OPENAI_API_KEY)
 
-# Создание клиента Discord
+#creating dicrod client
 bot = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 
-#Уведомление о активации бота по его готовности
+#message about bot readiness
 @bot.event
 async def on_ready():
     print(f'Logged in as {bot.user.name}')
-
-#Команда для отправки боту сообщения    
+ 
 @bot.command()
 async def chat(ctx, *, prompt):
-#Создаём переменную ответа бота, в которой задаём промт поведения, промт помощника и в промт пользователся вписываем переменную, в которой хранится текст сообщения
+#creating async function with bot prompt and it's answer
     response = client.chat.completions.create(
         messages=[
             {"role": "system", "content": "Тебе необходимо поддерживать диалог. Ты должен запоминать предедущие отправленные тебе сообщения и брать из них контекст для вопроса и/или ответа"},
@@ -47,11 +46,7 @@ async def image(ctx, *, prompt):
         
     )
     await ctx.reply(response.data[0].url)
-'''это не работает с dalle-3 (пишет, что слишком часто генерю картинки. 
-У далли 3 частота не может быть выше 1 картинки в минуту на бесплатной версии. 
-А я генерил 0, вообще, потому что программа не работала, 
-а на вход в n подаётся количество картинок для генераци, она там одна и короче хз, не работает)'''
-    
+#for some reason do not work with DALL-E 3
     
 
 bot.run(DISCORD_TOKEN)
