@@ -5,8 +5,8 @@ import openai
 from openai import OpenAI
 
 #initialazing the token and pasting API key
-DISCORD_TOKEN = "MTIyMjg3NjUxMDAzNDMyOTcyMQ.G7yJ-v.OP4YMpyaWfsdWX3nikyzjBlR2rkJI84TYjrp0w"
-OPENAI_API_KEY = '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'
+DISCORD_TOKEN = "YOUR BOT TOKEN"
+OPENAI_API_KEY = "YOUR API KEY"
 
 #connecting openAI
 client = OpenAI(api_key=OPENAI_API_KEY)
